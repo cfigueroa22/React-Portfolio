@@ -1,53 +1,84 @@
 import { useState } from "react";
-import { Link } from "react-scroll";
-import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import TabLogo from "../../src/assets/Port-Logo.png";
 
 const Header = () => {
-  let Links = [
-    { name: "Home", link: "home" },
-    { name: "About", link: "about" },
-    { name: "Projects", link: "projects" },
-    { name: "Contact", link: "contact" },
-  ];
-
   let [open, setOpen] = useState(false);
+
   return (
-    <div className="w-full max-w-7xl">
-      <div className="md:flex items-center justify-between py-2 md:px-10 px-7">
-        {/* Logo Section */}
-        <div className="flex items-center gap-1">
-          <img src={TabLogo} alt="tab_logo" className="w-16"></img>
-        </div>
-        {/* Menu Icons */}
-        <div
-          onClick={() => setOpen(!open)}
-          className="w-7 h-7 right-8 top-6 cursor-pointer md:hidden absolute"
-        >
-          {open ? <XMarkIcon /> : <Bars3BottomRightIcon />}
-        </div>
-        {/* Nav Links */}
+    <div className="sticky top-0 z-50 bg-white">
+      {/* Logo */}
+      <div className="bg-white">
+        <img src={TabLogo} alt="logo" className="w-16 pl-2 bg-white" />
+      </div>
+      {/* Close/Open Icon */}
+      <div
+        onClick={() => {
+          setOpen(!open);
+        }}
+        className="absolute top-0 right-0 pt-2 pr-1 text-4xl bg-white lg:hidden"
+      >
+        {open ? (
+          <div className="bg-white hover:cursor-pointer hover:text-gray-300">
+            <ion-icon name="close"></ion-icon>
+          </div>
+        ) : (
+          <div className="bg-white hover:cursor-pointer hover:text-gray-300">
+            <ion-icon name="menu"></ion-icon>
+          </div>
+        )}
+      </div>
+      {/* Menu */}
+      <div>
         <ul
-          className={`flex flex-col items-center justify-evenly md:flex md:items-center md:pb-0 absolute md:static md:z-auto md:flex-row z-10 right-0 w-full ml-20 rounded-lg md:w-auto mt-4 md:mt-0 md:pl-9 transition-all duration-500 ease-in ${
-            open ? "top-12" : "top-[-490px]"
+          className={`text-center w-full absolute bg-main z-50 transition-all duration-500 ease-in lg:top-0 lg:flex lg:bg-transparent lg:justify-end lg:gap-6 lg:pr-2 ${
+            open ? "top-12" : "top-[-1000px]"
           }`}
         >
-          {Links.map((link) => (
-            <li
-              key={link.name}
-              className="font-lato md:ml-8 md:my-0 my-7 font-semibold md:hover:transform md:hover:transition-all md:hover:-translate-y-0.5 md:hover:ease-in-out md:hover:duration-300 "
+          {" "}
+          <li
+            onClick={() => setOpen(false)}
+            className="z-50 py-6 bg-main lg:bg-transparent lg:py-1"
+          >
+            <a
+              href="#home"
+              className="text-4xl bg-main hover:cursor-pointer font-playfair hover:text-white lg:bg-transparent lg:text-2xl lg:hover:text-main"
             >
-              <Link
-                to={link.link}
-                activeClass="active"
-                smooth={true}
-                spy={true}
-                className="transition-all duration-500 hover:text-secondary cursor-pointer"
-              >
-                {link.name}
-              </Link>
-            </li>
-          ))}
+              Home
+            </a>
+          </li>
+          <li
+            onClick={() => setOpen(false)}
+            className="z-50 py-6 bg-main lg:bg-transparent lg:py-1"
+          >
+            <a
+              href="#about"
+              className="text-4xl bg-main hover:cursor-pointer font-playfair hover:text-white lg:bg-transparent lg:text-2xl lg:hover:text-main"
+            >
+              About
+            </a>
+          </li>
+          <li
+            onClick={() => setOpen(false)}
+            className="z-50 py-6 bg-main lg:bg-transparent lg:py-1"
+          >
+            <a
+              href="#projects"
+              className="text-4xl bg-main hover:cursor-pointer font-playfair hover:text-white lg:bg-transparent lg:text-2xl lg:hover:text-main"
+            >
+              Projects
+            </a>
+          </li>
+          <li
+            onClick={() => setOpen(false)}
+            className="z-50 py-6 bg-main lg:bg-transparent lg:py-1"
+          >
+            <a
+              href="#contact"
+              className="text-4xl bg-main hover:cursor-pointer font-playfair hover:text-white lg:bg-transparent lg:text-2xl lg:hover:text-main"
+            >
+              Contact
+            </a>
+          </li>
         </ul>
       </div>
     </div>

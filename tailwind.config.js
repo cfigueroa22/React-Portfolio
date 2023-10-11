@@ -9,11 +9,13 @@ export default {
         secondaryBtn: "#edeef2",
         main: "#c2b29c",
         titleColor: "hsla(35, 24%, 69%, 1)",
+        live: "#539165",
+        code: "#362FD9",
       },
 
       fontFamily: {
-        lato: ["Lato", "sans-serif"],
-        playfair: ["Playfair Display", "serif"],
+        spartan: ["League Spartan", "sans-serif"],
+        playfair: ["Playfair Display", "sans-serif"],
       },
     },
   },

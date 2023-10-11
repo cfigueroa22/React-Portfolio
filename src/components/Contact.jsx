@@ -42,99 +42,108 @@ const Contact = () => {
   });
 
   return (
-    <div className="px-7 md:px-28 my-10" id="contact">
-      <div className="md:flex">
-        {/* Text and Icons */}
-        <div className="md:flex-1 md:bg-secondaryBtn md:p-5 md:rounded-l-xl">
-          <h1 className="font-lato text-3xl font-semibold text-main md:bg-secondaryBtn">
-            Connect with me:
-          </h1>
-          {/* Social Icons */}
-          <div className="flex mt-3 md:mt-2 md:bg-secondaryBtn">
-            <a
-              href="https://www.linkedin.com/in/cfigueroa1222"
-              target="_blank"
-              className="ml-4"
-              rel="noreferrer"
+    <div>
+      <div className="my-10 px-7 md:px-24" id="contact">
+        <div className=" md:flex">
+          {/* Text and Icons */}
+          <div className="md:flex-1 md:bg-secondaryBtn md:p-5 md:rounded-l-xl">
+            <h1 className="text-3xl font-semibold font-spartan text-main md:bg-secondaryBtn lg:text-5xl lg:font-medium">
+              Connect with me:
+            </h1>
+            {/* Social Icons */}
+            <div className="flex mt-3 md:mt-2 md:bg-secondaryBtn">
+              <a
+                href="https://www.linkedin.com/in/cfigueroa1222"
+                target="_blank"
+                className="ml-4"
+                rel="noreferrer"
+              >
+                <FaLinkedin
+                  size={36}
+                  className="hover:text-primaryBtn md:bg-secondaryBtn"
+                />
+              </a>
+              <a
+                href="https://github.com/cfigueroa22"
+                target="_blank"
+                className="ml-4"
+                rel="noreferrer"
+              >
+                <FaGithub
+                  size={36}
+                  className="hover:text-primaryBtn md:bg-secondaryBtn"
+                />
+              </a>
+            </div>
+          </div>
+          {/* Contact Form */}
+          <div className="mt-10 md:mt-0 md:flex-1 md:bg-secondaryBtn md:p-5 md:rounded-r-xl">
+            <p className="mb-4 text-2xl font-spartan md:mb-6 md:bg-secondaryBtn lg:text-4xl">
+              Get in touch here:
+            </p>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
             >
-              <FaLinkedin
-                size={28}
-                className="hover:text-primaryBtn md:bg-secondaryBtn"
-              />
-            </a>
-            <a
-              href="https://github.com/cfigueroa22"
-              target="_blank"
-              className="ml-4"
-              rel="noreferrer"
-            >
-              <FaGithub
-                size={28}
-                className="hover:text-primaryBtn md:bg-secondaryBtn"
-              />
-            </a>
+              <Form
+                onSubmit={sendEmail}
+                ref={form}
+                className="md:bg-secondaryBtn"
+              >
+                <Field
+                  type="text"
+                  name="user_name"
+                  placeholder="Name"
+                  autoComplete="off"
+                  className="w-full border-b-2 border-main focus:outline-none md:bg-secondaryBtn lg:text-xl"
+                />
+                <ErrorMessage
+                  name="user_name"
+                  component="span"
+                  className="w-full text-red-500 md:bg-secondaryBtn "
+                />
+                <Field
+                  type="email"
+                  name="user_email"
+                  placeholder="Email"
+                  autoComplete="off"
+                  className="w-full pt-4 border-b-2 border-main focus:outline-none md:bg-secondaryBtn lg:text-xl"
+                />
+                <ErrorMessage
+                  name="user_email"
+                  component="span"
+                  className="w-full text-red-500 md:bg-secondaryBtn"
+                />
+                <Field
+                  as="textarea"
+                  name="message"
+                  placeholder="Message"
+                  className="w-full mt-8 border-b-2 resize-none border-main focus:outline-none md:bg-secondaryBtn lg:text-xl"
+                />
+                <ErrorMessage
+                  name="message"
+                  component="span"
+                  className="w-full text-red-500 md:bg-secondaryBtn"
+                />
+                <br />
+                <div className="flex items-center justify-center md:bg-secondaryBtn">
+                  <button
+                    type="submit"
+                    value="Send"
+                    className="w-40 py-3 mx-auto mt-5 text-xl duration-500 rounded-lg font-spartan bg-primaryBtn hover:bg-black hover:text-white trasition-all lg:text-2xl"
+                  >
+                    Send Message
+                  </button>
+                </div>
+              </Form>
+            </Formik>
           </div>
         </div>
-        {/* Contact Form */}
-        <div className="mt-10  md:mt-0 md:flex-1  md:bg-secondaryBtn md:p-5 md:rounded-r-xl">
-          <p className="font-lato mb-4 text-2xl md:mb-6 md:bg-secondaryBtn">
-            Get in touch here:
-          </p>
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-          >
-            <Form
-              onSubmit={sendEmail}
-              ref={form}
-              className="flex flex-col md:bg-secondaryBtn"
-            >
-              <Field
-                type="text"
-                name="user_name"
-                placeholder="Name"
-                autoComplete="off"
-                className="border-b-2 border-main focus:outline-none md:bg-secondaryBtn"
-              />
-              <ErrorMessage
-                name="user_name"
-                component="span"
-                className="text-red-500 md:bg-secondaryBtn"
-              />
-              <Field
-                type="email"
-                name="user_email"
-                placeholder="Email"
-                autoComplete="off"
-                className="border-b-2 border-main pt-4 focus:outline-none md:bg-secondaryBtn"
-              />
-              <ErrorMessage
-                name="user_email"
-                component="span"
-                className="text-red-500 md:bg-secondaryBtn"
-              />
-              <Field
-                as="textarea"
-                name="message"
-                placeholder="Message"
-                className="border-b-2 border-main mt-8 focus:outline-none resize-none md:bg-secondaryBtn"
-              />
-              <ErrorMessage
-                name="message"
-                component="span"
-                className="text-red-500 md:bg-secondaryBtn"
-              />
-              <div id="text-box"></div>
-              <button
-                type="submit"
-                value="Send"
-                className="font-lato bg-primaryBtn py-3 w-40 rounded-lg mx-auto mt-5 hover:bg-black hover:text-white trasition-all duration-500"
-              >
-                Send Message
-              </button>
-            </Form>
-          </Formik>
-        </div>
+      </div>
+      <div className="flex w-full mx-auto bg-primaryBtn">
+        <p className="m-3 mx-auto text-white bg-primaryBtn">
+          &#169; Carlos Figueroa
+        </p>
       </div>
     </div>
   );
